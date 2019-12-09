@@ -18,7 +18,7 @@ if (list == NULL)
 	{
 	return (0);
 	}
-while (tmp->next)
+while (tmp && tmp->next)
 	{
 	if (tmp->next == list)
 		{

@@ -1,0 +1,1 @@
+Starting with the first project PYTHON holbertonschool-higher_level_programming

@@ -20,7 +20,7 @@ if (list == NULL)
 	}
 tmp = list;
 tmp2 = list;
-while (tmp && tmp->next && tmp2 && tmp->next)
+while (tmp && tmp->next && tmp2 && tmp2->next)
 	{
 	tmp = tmp->next;
 	tmp2 = tmp2->next->next;

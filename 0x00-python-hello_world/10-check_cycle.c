@@ -12,20 +12,22 @@
 
 int check_cycle(listint_t *list)
 {
-listint_t *tmp;
+listint_t *tmp, *tmp2;
 
 if (list == NULL)
 	{
 	return (0);
 	}
 tmp = list;
-while (tmp->next != NULL)
+tmp2 = list;
+while (tmp && tmp->next && tmp2 && tmp->next)
 	{
-	if (tmp->next == list)
+	tmp = tmp->next;
+	tmp2 = tmp2->next->next;
+	if (tmp == tmp2)
 		{
 		return (1);
 		}
-	tmp = tmp->next;
 	}
 return (0);
 }

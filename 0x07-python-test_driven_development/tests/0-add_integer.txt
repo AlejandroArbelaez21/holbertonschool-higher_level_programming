@@ -1,3 +1,6 @@
+import module:
+    >>> add_integer = __import__('0-add_integer').add_integer
+
 Section // Non-Parameters
 =========================
 Test case #0: A test case without parameters
@@ -29,8 +32,6 @@ Test case #5: A test case between two floats
    >>> add_integer(10.0, 15.0)
    25
 
-
-
 Test case #6: A test case between integer and float
    >>> add_integer(6, 20.0)
    26
@@ -56,11 +57,6 @@ Test case #11: A test case between infinity float and negative integer
    >>> add_integer(999e9999, -1)
    Traceback (most recent call last):
    OverflowError: cannot convert float infinity to integer
-
-
-
-
-
 
 Section // Non-Numbers
 ======================

@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 class Rectangle:
     def __init__(self, width=0, height=0):
-        self.height = height
         self.width = width
+        self.height = height
 
     @property
     def width(self):
@@ -27,3 +27,26 @@ class Rectangle:
         if value < 0:
             raise ValueError("height must be >= 0")
         self.__height = value
+
+    def area(self):
+        return self.__width * self.__height
+
+    def perimeter(self):
+        if self.__width == 0 or self.__height == 0:
+            return 0
+        else:
+            return ((self.__width + self.__height) * 2)
+
+    def __str__(self):
+        my_str = ""
+        if self.__width == 0 or self.__height == 0:
+            return my_str
+        else:
+            for row in range(self.__height):
+                for elem in range(self.__width):
+                    my_str += "#"
+                my_str += "\n"
+            return my_str.strip('\n')
+
+    def __repr__(self):
+        return ("Rectangle ({}, {})".format(self.__width, self.__height))

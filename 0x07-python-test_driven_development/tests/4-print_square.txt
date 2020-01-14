@@ -60,11 +60,6 @@ TypeError: size must be an integer
         ...
         TypeError: print_square() takes 1 positional argument but 2 were given
 
-
-    Zero
-        >>> print_square(0)
-        <empty>
-
 'size' is float:
 	>>> print_square(0.5)
 	Traceback (most recent call last):

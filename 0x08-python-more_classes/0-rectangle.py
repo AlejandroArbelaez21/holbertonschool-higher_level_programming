@@ -1,0 +1,3 @@
+#c
+class Rectangle:
+	pass

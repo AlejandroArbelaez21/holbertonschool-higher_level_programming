@@ -1,0 +1,49 @@
+import module:
+         >>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+
+Test case #1: A test case with integer mul
+         >>> m_a = [[1, 2], [3, 4]]
+         >>> m_b = [[5, 6], [7, 8]]
+         >>> lazy_matrix_mul(m_a, m_b)
+         [[19, 22], [43, 50]]
+
+Test case #2: A test case with integer and float elements and float mul
+         >>> m_a = [[1, -2], [-3, 4]]
+         >>> m_b = [[-5, 6], [7, -8]]
+         >>> lazy_matrix_mul(m_a, m_b)
+         [[-19, 22], [43, -50]]
+
+Test case #3: A test case with a matrix empty
+         >>> m_a = [[]]
+         >>> m_b = [[1, 2, 3], [2, 3, 4], [3, 4, 5]]
+         >>> lazy_matrix_mul(m_a, m_b)
+         Traceback (most recent call last):
+         ValueError: m_a can't be empty
+
+Test case #4: A test case with a matrix empty
+         >>> m_a = [[1, 2, 3], [2, 3, 4], [3, 4, 5]]
+         >>> m_b = [[]]
+         >>> lazy_matrix_mul(m_a, m_b)
+         Traceback (most recent call last):
+         ValueError: m_b can't be empty
+
+Test case #5: A test case when matrix is not a list
+         >>> m_a = [[1, 2, 3], [2, 3, 4], [3, 4, 5]]
+         >>> m_b = 10
+         >>> lazy_matrix_mul(m_a, m_b)
+         Traceback (most recent call last):
+         TypeError: m_b must be a list
+
+Test case #6: A test case with string
+        >>> m_a = "Holberton"
+        >>> m_b = [[1, 2, 3], [2, 3, 4], [3, 4, 5]]
+        >>> lazy_matrix_mul(m_a, m_b)
+        Traceback (most recent call last):
+        TypeError: m_a must be a list
+
+Test case #7: A test case with a string acting as a row
+        >>> m_a = [[1, 2, 3], [4, 5, 6], ['Python']]
+        >>> m_b = [[1, 2, 3], [2, 3, 4], [3, 4, 5]]
+        >>> lazy_matrix_mul(m_a, m_b)
+        Traceback (most recent call last):
+        TypeError: m_a should contain only integers or floats

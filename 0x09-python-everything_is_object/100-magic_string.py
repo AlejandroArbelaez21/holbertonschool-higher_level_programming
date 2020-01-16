@@ -1,4 +1,4 @@
 #!/usr/bin/python3
 def magic_string():
-    c = "Holberton "
-    return c * 10
+    n = 0/ n += 1
+    return "Holberton" * n

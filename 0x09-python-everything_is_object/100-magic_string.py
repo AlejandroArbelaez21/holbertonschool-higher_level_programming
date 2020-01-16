@@ -1,4 +1,4 @@
 #!/usr/bin/python3
 def magic_string():
-    n = 0/ n += 1
-    return "Holberton" * n
+    mystr = [0]
+    return (', '.join(["Holberton"] * len(mystr)))

@@ -1,26 +1,69 @@
-Import module:
-    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+=================== 
+Arguments validator 
+===================
 
-Test case #0
->>> base_geo = BaseGeometry()
->>> print(base_geo.area())
-Traceback (most recent call last):
-Exception: area() is not implemented
+>>> bg = BaseGeometry() 
+bg.integer_validator()
+Traceback (most recent call last): 
+... 
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value' 
 
-Test case #1
->>> base_geo = BaseGeometry()
->>> base_geo.integer_validator("name", "John")
+================ 
+Negative number 
+================
+
+>>> bg = BaseGeometry() 
+bg.integer_validator("name", -9)
+Traceback (most recent call last): 
+... 
+ValueError: name must be greater than 0 
+
+=================== 
+Integer Validator 
+===================
+
+>>> bg = BaseGeometry() 
+bg.integer_validator("name", True)
+Traceback (most recent call last): 
+... 
+TypeError: name must be an integer 
+
+name should be a string and value ALWAYS a positive integer and different than 0
+>>> bg.integer_validator("an_int", 18)
+>>> bg.integer_validator("width", 89) 
+
+>>> bg.area()
+Traceback (most recent call last): 
+Exception: area() is not implemented 
+
+=== Test with 0 ===
+>>> bg.integer_validator("width", 0)
 Traceback (most recent call last):
+ValueError: width must be greater than 0 
+
+=== Test with a negative number ===
+>>> bg.integer_validator("width", -1)
+Traceback (most recent call last):
+ValueError: width must be greater than 0 
+
+=== Test with something different than an integer ===
+>>> bg.integer_validator("width", (4,))
+Traceback (most recent call last):
+TypeError: width must be an integer
+
+>>> bg.integer_validator("name", "Sapa")
+Traceback (most recent call last): 
 TypeError: name must be an integer
 
-Test case #2
->>> base_geo = BaseGeometry()
->>> base_geo.integer_validator("Alejo", -21)
-Traceback (most recent call last):
-ValueError: Alejo must be greater than 0
+>>> bg.integer_validator("age", None)
+Traceback (most recent call last): 
+TypeError: age must be an integer 
 
-Test case #3
->>> base_geo = BaseGeometry()
->>> base_geo.integer_validator("Arbelaez", 0)
+=== Tests with no arguments ===
+>>> bg.integer_validator("age")
 Traceback (most recent call last):
-ValueError: Arbelaez must be greater than 0
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+>>> bg.integer_validator()
+Traceback (most recent call last):
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'

@@ -12,5 +12,5 @@ class Student:
             my_dict = {}
             for y in attrs:
                 if y in self.__dict__:
-                    self.__dict__[y] == my_dict[y]
+                    self.__dict__[y] = my_dict[y]
             return (my_dict)

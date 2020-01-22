@@ -6,4 +6,4 @@ def read_lines(filename="", nb_lines=0):
         else:
             len_lines = file.readlines()
             for line in range(nb_lines):
-                print(len_lines, end="")
+                print(len_lines[line], end="")

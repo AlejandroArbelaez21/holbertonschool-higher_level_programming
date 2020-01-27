@@ -4,7 +4,7 @@ import the module json
 """
 
 
-from json import dumps
+from json import dumps, loads
 
 
 class Base:
@@ -42,3 +42,12 @@ class Base:
                 my_list.append(my_dict)
             with open(cls.__name__ + ".json", "w", encoding="UTF-8") as file:
                 return file.write(cls.to_json_string(my_list))
+
+    @staticmethod
+    def from_json_string(json_string):
+        my_list = []
+        if json_string is None or json_string == []:
+            return my_list
+        else:
+            my_list = loads(json_string)
+            return my_list

@@ -32,8 +32,12 @@ class Base:
     @classmethod
     def save_to_file(cls, list_objs):
         """ define the classmethod"""
-        str = []
+        my_list = []
         if list_objs is None:
-            return str
+            return my_list
         else:
-            return cls.to_json_string(list_objs)
+            for ob in list_objs:
+                my_dict = ob.to_dictionary()
+                my_list.append(my_dict)
+            with open(cls.__name__ + ".json",  mode="w", encoding="UTF-8") as file:
+                return file.write(cls.to_json_string(my_list))

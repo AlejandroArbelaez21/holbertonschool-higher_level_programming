@@ -1,21 +1,33 @@
 #!/usr/bin/python3
+"""
+import the class Rectangle
+"""
+
+
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
+    """
+    class Square inherited of Rectangle
+    """
     def __init__(self, size, x=0, y=0, id=None):
+        """ define the__init__ constructor """
         super().__init__(size, size, x, y, id)
 
     def __str__(self):
+        """ Display the properties of the rectangle """
         return "[Square] ({}) {}/{} - {}".format(self.id, self.x,
                                                  self.y, self.width)
 
     @property
     def size(self):
+        """ define the size property """
         return self.width
 
     @size.setter
     def size(self, value):
+        """ define the size setter """
         if type(value) is not int:
             raise TypeError("size must be an integer")
         if value <= 0:
@@ -24,6 +36,7 @@ class Square(Rectangle):
         self.height = value
 
     def update(self, *args, **kwargs):
+        """ define the update method """
         if args and args is not None:
             if len(args) == 1:
                 self.id = args[0]
@@ -51,6 +64,7 @@ class Square(Rectangle):
                     self.y = value
 
     def to_dictionary(self):
+        """ define the dictionary method """
         my_dict2 = {}
         my_dict2['id'] = self.id
         my_dict2['x'] = self.x

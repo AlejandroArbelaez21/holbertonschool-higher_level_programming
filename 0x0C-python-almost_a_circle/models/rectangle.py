@@ -3,10 +3,10 @@ from models.base import Base
 
 class Rectangle(Base):
     def __init__(self, width, height, x=0, y=0, id=None):
-        self.__width = width
-        self.__height = height
-        self.__x = x
-        self.__y = y
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
         super(Rectangle, self).__init__(id)
 
     @property
@@ -76,24 +76,37 @@ class Rectangle(Base):
                                                         self.y, self.width,
                                                         self.height))
 
-    def update(self, *args):
-        if len(args) == 1:
-            self.id = args[0]
-        elif len(args) == 2:
-            self.id = args[0]
-            self.width = args[1]
-        elif len(args) == 3:
-            self.id = args[0]
-            self.width = args[1]
-            self.height = args[2]
-        elif len(args) == 4:
-            self.id = args[0]
-            self.width = args[1]
-            self.height = args[2]
-            self.x = args[3]
+    def update(self, *args, **kwargs):
+        if args and args is not None:
+            if len(args) == 1:
+                self.id = args[0]
+            elif len(args) == 2:
+                self.id = args[0]
+                self.width = args[1]
+            elif len(args) == 3:
+                self.id = args[0]
+                self.width = args[1]
+                self.height = args[2]
+            elif len(args) == 4:
+                self.id = args[0]
+                self.width = args[1]
+                self.height = args[2]
+                self.x = args[3]
+            else:
+                self.id = args[0]
+                self.width = args[1]
+                self.height = args[2]
+                self.x = args[3]
+                self.y = args[4]
         else:
-            self.id = args[0]
-            self.width = args[1]
-            self.height = args[2]
-            self.x = args[3]
-            self.y = args[4]
+            for key, value in kwargs.items():
+                if key == 'id':
+                    self.id = value
+                elif key == 'height':
+                    self.height = value
+                elif key == 'width':
+                    self.width = value
+                elif key == 'x':
+                    self.x = value
+                elif key == 'y':
+                    self.y = value

@@ -49,3 +49,11 @@ class Square(Rectangle):
                     self.x = value
                 elif key == 'y':
                     self.y = value
+
+    def to_dictionary(self):
+        my_dict2 = {}
+        my_dict2['id'] = self.id
+        my_dict2['x'] = self.x
+        my_dict2['size'] = self.size
+        my_dict2['y'] = self.y
+        return my_dict2

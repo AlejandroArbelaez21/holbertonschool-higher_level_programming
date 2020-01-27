@@ -111,3 +111,12 @@ class Rectangle(Base):
                     self.x = value
                 elif key == 'y':
                     self.y = value
+
+    def to_dictionary(self):
+        my_dict = {}
+        my_dict['x'] = self.x
+        my_dict['y'] = self.y
+        my_dict['id'] = self.id
+        my_dict['height'] = self.height
+        my_dict['width'] = self.width
+        return my_dict

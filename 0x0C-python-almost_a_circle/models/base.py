@@ -1,8 +1,10 @@
 #!/usr/bin/python3
-from json import dumps
 """
 import the module json
 """
+
+
+from json import dumps
 
 
 class Base:
@@ -30,7 +32,8 @@ class Base:
     @classmethod
     def save_to_file(cls, list_objs):
         """ define the classmethod"""
+        str = []
         if list_objs is None:
-            str_json = "[]"
+            return str
         else:
             return cls.to_json_string(list_objs)

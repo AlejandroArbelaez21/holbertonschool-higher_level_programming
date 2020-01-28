@@ -60,3 +60,15 @@ class Base:
             dummy = cls(1)
         dummy.update(**dictionary)
         return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        file = cls.__name__ + ".json"
+        list = []
+        try:
+            with open(file, mode="r") as f:
+                list = cls.from_json_string(f.read())
+                return [cls.create(**my_dict) for my_dict in list]
+        except:
+            pass
+        return list

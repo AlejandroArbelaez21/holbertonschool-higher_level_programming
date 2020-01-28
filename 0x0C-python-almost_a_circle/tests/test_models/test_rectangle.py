@@ -1,57 +1,55 @@
 #!/usr/bin/python3
-
 import unittest
-Import pep8
+import pep8
 from models.base import Base
 from models.rectangle import Rectangle
 
-class Testrectangle(unittest.TestCase):
 
-	def test_pep8_conformance_rectangle(self):
+class Testrectangle(unittest.TestCase):
+    def test_pep8_conformance_rectangle(self):
         """Test that we conform to PEP8."""
         pep8style = pep8.StyleGuide(quiet=True)
         result = pep8style.check_files(['models/rectangle.py'])
         self.assertEqual(result.total_errors, 0,
-                     	"Found code style errors (and warnings).")
+                         "Found code style errors (and warnings).")
 
+    def test_subclass(self):
+        self.assertTrue(issubclass(Rectangle, Base))
 
-	def test_subclass(self):
-    	self.assertTrue( issubclass(Rectangle, Base))
+    def test_parameters(self):
+        """ """
+        r1 = Rectangle(10, 2)
+        r2 = Rectangle(2, 10)
+        r3 = Rectangle(10, 2, 0, 0, 12)
+        self.assertEqual(r1.id, 1)
+        self.assertEqual(r1.width, 10)
+        self.assertEqual(r1.height, 2)
+        self.assertEqual(r1.x, 0)
+        self.assertEqual(r1.y, 0)
+        self.assertEqual(r2.id, 2)
+        self.assertEqual(r2.width, 2)
+        self.assertEqual(r2.height, 10)
+        self.assertEqual(r2.x, 0)
+        self.assertEqual(r2.y, 0)
+        self.assertEqual(r3.id, 12)
+        self.assertEqual(r3.width, 10)
+        self.assertEqual(r3.height, 2)
+        self.assertEqual(r3.x, 0)
+        self.assertEqual(r3.y, 0)
 
-	def test_parameters(self):
-    	r1 = Rectangle(10, 2)
-    	r2 = Rectangle(2, 10)
-    	r3 = Rectangle(10, 2, 0, 0, 12)
-
-    	self.assertEqual(r1.id, 1)
-    	self.assertEqual(r1.width, 10)
-    	self.assertEqual(r1.height, 2)
-    	self.assertEqual(r1.x, 0)
-    	self.assertEqual(r1.y, 0)
-
-    	self.assertEqual(r2.id, 2)
-    	self.assertEqual(r2.width, 2)
-    	self.assertEqual(r2.height, 10)
-    	self.assertEqual(r2.x, 0)
-    	self.assertEqual(r2.y, 0)
-
-	self.assertEqual(r3.id, 12)
-    	self.assertEqual(r3.width, 10)
-    	self.assertEqual(r3.height, 2)
-    	self.assertEqual(r3.x, 0)
-    	self.assertEqual(r3.y, 0)
-
-    	with self.assertRaises(TypeError):
-        		r4 = Rectangle()
+    with self.assertRaises(TypeError):
+        r4 = Rectangle()
 
 """Task 3 """
-def test_string(self):
-	with self.assertRaises(TypeError):
-		R1 = Rectangle(1.01, 3)
-	with self.assertRaises(TypeError):
-		R1 = Rectangle(1.01, 3)
 
-   def test_type_param(self):
+
+def test_string(self):
+    with self.assertRaises(TypeError):
+        R1 = Rectangle(1.01, 3)
+    with self.assertRaises(TypeError):
+        R1 = Rectangle(1.01, 3)
+
+    def test_type_param(self):
         """Task 3 """
 
         """ WIDTH TESTING """
@@ -68,8 +66,8 @@ def test_string(self):
             R4 = Rectangle(True, 4)
             raise TypeError()
 
-       """ HEIGHT TESTING """
-       with self.assertRaises(TypeError):
+        """ HEIGHT TESTING """
+        with self.assertRaises(TypeError):
             H1 = Rectangle(5, 1.76)
             raise TypeError()
         with self.assertRaises(TypeError):
@@ -111,5 +109,30 @@ def test_string(self):
             raise ValueError()
 
 if __name__ == "_main_":
-   unittest.main()
+    unittest.main()
 
+
+def test_str(self):
+    string = "[Rectangle] (1) 0/0 - 1/1"
+    temp_stdout = StringIO()
+    with contextlib.redirect_stdout(temp_stdout):
+        R1 = Rectangle(1, 1, )
+        print(R1)
+    output = temp_stdout.getvalue().strip()
+    self.assertEqual(output, string)
+    Base._Base_nb__objects = 0
+    string = "[Rectangle] (12) 2/1 - 4/6"
+    temp_stdout = StringIO()
+    with contextlib.redirect_stdout(temp_stdout):
+        R1 = Rectangle(4, 6, 2, 1, 12)
+        print(R1)
+    output = temp_stdout.getvalue().strip()
+    self.assertEqual(output, string)
+    Base._Base_nb__objects = 0
+    string = "[Rectangle] (1) 1/0 - 5/5"
+    temp_stdout = StringIO()
+    with contextlib.redirect_stdout(temp_stdout):
+        R2 = Rectangle(5, 5, 1)
+        print(R2)
+    output = temp_stdout.getvalue().strip()
+    self.assertEqual(output, string)

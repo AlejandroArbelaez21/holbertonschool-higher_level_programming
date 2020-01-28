@@ -91,8 +91,6 @@ class TestSquare(unittest.TestCase):
         expected = {'id': 5, 'x': 5, 'size': 5, 'y': 5}
         self.assertEqual(s1_dictionary, expected)
 
-End task 14
-
 
 if __name__ == "_main_":
     unittest.main()

@@ -72,3 +72,28 @@ class Base:
         except:
             pass
         return list
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        my_list = []
+        if list_objs is None:
+            with open(cls.__name__ + ".csv", "w", encoding="UTF-8") as file:
+                return file.write(cls.to_json_string(my_list))
+        else:
+            for ob in list_objs:
+                my_dict = ob.to_dictionary()
+                my_list.append(my_dict)
+            with open(cls.__name__ + ".csv", "w", encoding="UTF-8") as file:
+                return file.write(cls.to_json_string(my_list))
+
+    @classmethod
+    def load_from_file_csv(cls):
+        file = cls.__name__ + ".csv"
+        list = []
+        try:
+            with open(file, mode="r") as f:
+                list = cls.from_json_string(f.read())
+                return [cls.create(**my_dict) for my_dict in list]
+        except:
+            pass
+        return list

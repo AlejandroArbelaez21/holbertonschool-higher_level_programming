@@ -52,7 +52,7 @@ class Base:
             my_list = loads(json_string)
             return my_list
 
-    @staticmethod
+    @classmethod
     def create(cls, **dictionary):
         if cls.__name__ is "Rectangle":
             dummy = cls(1, 1)

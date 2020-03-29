@@ -18,4 +18,3 @@ if __name__ == "__main__":
     """ loop for print the states """
     for state in c.fetchall():
         print(state)
-

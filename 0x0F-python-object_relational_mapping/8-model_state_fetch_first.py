@@ -9,12 +9,13 @@ from sqlalchemy.orm import sessionmaker
 from sys import argv
 
 if __name__ == "__main__":
+    """ This prevents that my code should not be executed when imported """
     engine = create_engine('mysql://{}:{}@localhost:3306/{}'.format
                            (argv[1], argv[2], argv[3]))
     Session = sessionmaker(bind=engine)
     session = Session()
-    for instance in session.query(State).order_by(State.id):
+    for instance in session.query.first(State).order_by(State.id):
         if instance is None:
             print("Nothing")
-        if instance.id == 1:
+        else:
             print("{}: {}".format(instance.id, instance.name))

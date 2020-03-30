@@ -13,6 +13,6 @@ if __name__ == "__main__":
                            (argv[1], argv[2], argv[3]))
     Session = sessionmaker(bind=engine)
     session = Session()
-    for instance in session.query(State).order_by(State.id).
-    filter(State.name.like('%a%')):
+    for instance in session.query(State).order_by(State.id).filter(
+                    State.name.like('%a%')):
         print("{}: {}".format(instance.id, instance.name))

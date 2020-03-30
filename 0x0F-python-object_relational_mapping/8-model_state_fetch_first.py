@@ -14,8 +14,8 @@ if __name__ == "__main__":
                            (argv[1], argv[2], argv[3]))
     Session = sessionmaker(bind=engine)
     session = Session()
-    for instance in session.query.first(State).order_by(State.id):
-        if instance is None:
-            print("Nothing")
-        else:
-            print("{}: {}".format(instance.id, instance.name))
+    instance = session.query(State).order_by(State.id).first()
+    if instance is None:
+        print("Nothing")
+    else:
+        print("{}: {}".format(instance.id, instance.name))

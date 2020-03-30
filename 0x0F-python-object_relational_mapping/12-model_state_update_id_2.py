@@ -14,5 +14,5 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
     instance = session.query(State).filter_by(id=2).first()
-    instance.name = "New Mwxico"
+    instance.name = 'New Mwxico'
     session.commit()

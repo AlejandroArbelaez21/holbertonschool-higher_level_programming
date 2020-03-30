@@ -17,3 +17,4 @@ if __name__ == "__main__":
     session.add(other)
     instance = session.query(State).filter(State.name.like(other.name)).first()
     print(instance.id)
+    session.commit()

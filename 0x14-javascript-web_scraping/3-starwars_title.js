@@ -1,7 +1,7 @@
 #!/usr/bin/node
 const requests = require('request');
 
-requests(`http://swapi.co/api/films/${process.argv[2]}`, function writestatus (err, response, body) {
+requests('https://swapi-api.hbtn.io/api/films/' + process.argv[2], function (err, response, body) {
   if (err) {
     console.log(err);
   } else {

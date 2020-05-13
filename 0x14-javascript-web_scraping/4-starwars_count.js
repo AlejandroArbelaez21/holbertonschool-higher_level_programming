@@ -12,6 +12,6 @@ requests(process.argv[2], function (err, response, body) {
       if (value.characters.includes('https://swapi.co/api/people/18/')) { cont++; }
     }
     console.log(cont);
-    return cont
+    return cont;
   }
 });
